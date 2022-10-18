@@ -1,4 +1,5 @@
-// 5 step process: 
+// 5 step process to show something on the screen:
+
 // 1) Import React and ReactDOM libraries
 import React from 'react';
 import ReactDOM from 'react-dom/client';
