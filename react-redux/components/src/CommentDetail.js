@@ -18,4 +18,4 @@ const CommentDetail = props => {
     );
 };
 
-export default CommentDetail
+export default CommentDetail;
