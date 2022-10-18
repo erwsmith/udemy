@@ -12,6 +12,7 @@ const root = ReactDOM.createRoot(el);
 
 // 4) Create a component
 function App() {
+    // Basic building blocks:
     // const date = new Date();
     // const time = date.toLocaleTimeString();
     // return <h1>{time}</h1>;
@@ -42,8 +43,8 @@ function App() {
     //     />
     // );
 
-
-    // 5 rules for HTML to JSX: 
+    // 5 Rules for converting HTML to JSX: 
+    // ------------------------------------
     // 1. All prop names follow camelCase (e.g. maxLength, autoFocus)
     // 2. Number attributes use curly braces
     // 3. Boolean true can be written with just the prop name. False should be
@@ -51,12 +52,15 @@ function App() {
     // 4. The class attribute is 'className'
     // 5. In-line styles are provided as objects
 
+    // Examples
     // return <textarea autoFocus={true} />;
     // return <input spellCheck maxLength={8} />;
     // return <input style={{ border: '3px solid red', paddingTop: '5px', marginBottom: '5px'}} />;
-    return ( 
-        <input placeholder="hi there" />
-    );
+    // return ( 
+    //     <input placeholder="hi there" />
+    // );
+
+
 }
 
 // 5) Show the component on the screen
