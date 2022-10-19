@@ -7,14 +7,15 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     // this is the only time we do direct assigment to this.state: 
-    this.state = { lat: null };
+    this.state = { lat: 'loading...' };
 
     window.navigator.geolocation.getCurrentPosition(
-      (position) => {
+      // callback function
+      position => {
         // the only way to update state is  setState()
         this.setState({ lat: position.coords.latitude })
-      }, 
-      (err) => console.log(err)
+      },
+      err => console.log(err)
     );
   }
 
@@ -24,5 +25,4 @@ class App extends React.Component {
   }
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
