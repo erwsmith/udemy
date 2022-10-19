@@ -1,8 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
+// Functional component: 
 const App = () => {
-  return <div>Hi there!</div>;
+  window.navigator.geolocation.getCurrentPosition(
+    // Success callback
+    (position) => console.log(position), 
+    // Failure callback
+    (err) => console.log(err)
+  );
+
+  return <div>Latitude: {}</div>;
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
