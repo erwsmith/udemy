@@ -1,7 +1,7 @@
 import './SeasonDisplay.css';
 import React from 'react';
 
-
+// Put helpers at the top:
 const seasonConfig = {
     summer: {
         text: "Let's hit the beach!",
@@ -23,6 +23,8 @@ const getSeason = (lat, month) => {
     }
 }
 
+
+// Put components at the bottom:
 const SeasonDisplay = (props) => {
     const season = getSeason(props.lat, new Date().getMonth());
     const { text, iconName } = seasonConfig[season]
