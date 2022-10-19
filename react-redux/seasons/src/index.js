@@ -7,8 +7,10 @@ import './style/App.css'
 
 // Class based component: 
 class App extends React.Component {
+  // CONSTRUCTOR (essentially)
   state = { lat: null, errorMessage: '' };
 
+  // LIFECYCLE METHODS
   // If component successfully was rendered to screen
   // Perfect location to load data for component
   componentDidMount() {
@@ -24,10 +26,10 @@ class App extends React.Component {
   }
 
   // Cleanup on component
-  componentWillUnmount() {
+  componentWillUnmount() {}
 
-  }
 
+  // Code for conditional rendering, better here than in actual render function
   renderContent() {
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>
@@ -38,6 +40,7 @@ class App extends React.Component {
     return <Spinner message="Please accept location request" />
   }
 
+  // RENDER
   // Minimize code inside render function, it gets called a lot, just return JSX
   render () {
     return (
