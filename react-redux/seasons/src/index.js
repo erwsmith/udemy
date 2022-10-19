@@ -1,29 +1,19 @@
+import "semantic-ui-css/semantic.min.css";
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import SeasonDisplay from './SeasonDisplay';
+import Spinner from './Spinner';
 
 // Class based component: 
 class App extends React.Component {
-  // Gets called when a new instance of the object is created
-  // This is the place for one-time setup
-  // Best practice is to avoid data loading here
-  constructor(props) {
-    super(props);
-    // This is the only time we do direct assigment to this.state: 
-    this.state = { lat: null, errorMessage: '' };
-  }
+  state = { lat: null, errorMessage: '' };
 
   // If component successfully was rendered to screen
   // Perfect location to load data for component
   componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
-      // Callback function
-      position => {
-        // The only way to update state is  setState()
-        this.setState({ lat: position.coords.latitude });
-      },
-      err => {
-        this.setState({ errorMessage: err.message });
-      }
+      position => this.setState({ lat: position.coords.latitude }),
+      err => this.setState({ errorMessage: err.message })
     );
   }
 
@@ -44,9 +34,9 @@ class App extends React.Component {
       return <div>Error: {this.state.errorMessage}</div>
     }
     if (!this.state.errorMessage && this.state.lat) {
-      return <div>Latitude: {this.state.lat}</div> 
+      return <SeasonDisplay lat={this.state.lat} />
     }
-    return <div>Loading...</div>
+    return <Spinner />
   }
 }
 
