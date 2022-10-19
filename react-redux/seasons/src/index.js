@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import SeasonDisplay from './SeasonDisplay';
 import Spinner from './Spinner';
+import './style/App.css'
 
 // Class based component: 
 class App extends React.Component {
@@ -27,9 +28,7 @@ class App extends React.Component {
 
   }
 
-  // Minimize code inside render function, it gets called a lot, just return JSX
-  render () {
-    // Conditional rendering
+  renderContent() {
     if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>
     }
@@ -37,6 +36,16 @@ class App extends React.Component {
       return <SeasonDisplay lat={this.state.lat} />
     }
     return <Spinner message="Please accept location request" />
+  }
+
+  // Minimize code inside render function, it gets called a lot, just return JSX
+  render () {
+    return (
+      <div className="main-index-div">
+        {this.renderContent()}
+      </div>
+
+    )
   }
 }
 
