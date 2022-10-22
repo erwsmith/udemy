@@ -12,7 +12,7 @@ const items = [
     }, 
     {
         title: 'Third Title',
-        conent: 'Third content'
+        content: 'Third content'
     }
 ]
 
