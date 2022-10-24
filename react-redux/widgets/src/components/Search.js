@@ -33,10 +33,17 @@ const Search  = () => {
     const renderedResults = results.map((result) => {
         return (
             <div key={result.pageid} className='item'>
+                <div className='right floated content'>
+                    <a 
+                        href={`https://en.wikipedia.org?curid=${result.pageid}`}
+                        className='ui button'>Go
+                    </a>
+                </div> 
                 <div className='content'>
                     <div className='header'>
                         {result.title}
                     </div>
+                    {/* This exposes the site to possible XSS attacks */}
                     <span dangerouslySetInnerHTML={{ __html: result.snippet }}></span>
                 </div>
             </div>
