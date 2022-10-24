@@ -35,7 +35,7 @@ const options = [
 
 const App = () => {
   return (
-    <div>
+    <div className="ui container">
         <Translate />
     </div>
   );
