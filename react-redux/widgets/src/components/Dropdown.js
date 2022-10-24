@@ -2,6 +2,25 @@ import React, { useState, useEffect, useRef }  from 'react';
 
 const Dropdown = ({ options, selected, onSelectedChange }) => {
     const [open, setOpen] = useState(false);
+    const ref = useRef();
+
+    useEffect(() => {
+        const onBodyClick = (event) => {
+                // you can use contains() on any DOM element to check for its children
+                if (ref.current.contains(event.target)) {
+                    return;
+                }
+                setOpen(false);
+            };
+
+        // DOM event listeners get called before React event listeners
+        document.body.addEventListener("click", onBodyClick);
+
+        // cleanup - remove event listener 
+        return () => {
+            document.body.removeEventListener('click', onBodyClick);
+        }
+      }, []); // only run on initial render
 
     const renderedOptions = options.map((option) => {
         if (option.value === selected.value) {
@@ -11,7 +30,9 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
             <div 
                 key={option.value} 
                 className='item'
-                onClick={() => onSelectedChange(option)}
+                onClick={() => {
+                    onSelectedChange(option);
+                }}
             >
                 {option.label}
             </div>
@@ -19,11 +40,13 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
     });
 
     return (
-        <div className='ui form'>
+        <div ref={ref} className='ui form'>
             <div className='field'>
                 <label className='label'>Select a Color</label>
                 <div 
-                    onClick={() => setOpen(!open)} 
+                    onClick={() => {
+                        setOpen(!open);
+                    }} 
                     className={`ui selection dropdown ${open ? 'visible active' : ''}`}
                 >
                     <i className='dropdown icon'></i>
