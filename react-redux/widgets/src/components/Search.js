@@ -21,11 +21,25 @@ const Search  = () => {
             });
             setResults(data.query.search);
         };
-        if (term) {
+
+        if (term && !results.length) {
             search();
+        } else {
+            const timeoutId = setTimeout(() => {
+                if (term) {
+                    search();
+                }
+            }, 1000);
+    
+            // The only thing useEffect can return is another function
+            return () => {
+                clearTimeout(timeoutId);
+            }
         }
+
+        
     }, [term]);
-    // second argument in useEffect controls when it runs
+    // The second argument in useEffect controls when it runs
     // [] runs only at initial render
     // ... nothing... runs at initial render and after every rerender
     // [data] runs at initial render, and after ever rerender if data has changed
