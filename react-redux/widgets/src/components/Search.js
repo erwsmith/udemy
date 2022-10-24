@@ -6,7 +6,7 @@ const Search  = () => {
     const [term, setTerm] = useState('programming');
     const [results, setResults] = useState([]);
 
-    console.log(results);
+    // console.log(results);
 
     useEffect(() => {
         const search = async () => {
