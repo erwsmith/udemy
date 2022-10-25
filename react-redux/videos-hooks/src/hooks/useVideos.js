@@ -1,4 +1,4 @@
-// Hook to search for and make use of a list of videos
+// Custom Hook to search for and make use of a list of videos
 
 import { useState, useEffect } from 'react'; 
 import youtube from '../apis/youtube';
@@ -8,7 +8,7 @@ const useVideos = (defaultSearchTerm) => {
 
     useEffect(() => {
         search(defaultSearchTerm);
-    }, []);
+    }, [defaultSearchTerm]);
 
     const search = async (term) => {
         const response = await youtube.get("/search", {
