@@ -1,4 +1,5 @@
 import React from 'react';
+import PostList from './PostList';
 
 const App = () => {
     return (
@@ -6,7 +7,7 @@ const App = () => {
         <div className="ui grid">
           <div className="ui row">
             <div className="eleven wide column">
-                App col0
+                <PostList />
             </div>
             <div className="five wide column">
                 App col1
