@@ -1,3 +1,4 @@
 export default () => {
-    return 123;
+    // Reducers must not return undefined
+    return null;
 }
