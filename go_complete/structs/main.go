@@ -18,7 +18,7 @@ type person struct {
 	contactInfo
 }
 
-
+// Go is a 'Pass by Value' language, uses pointers to memory locations
 // turn value into address with '&'
 // turn address into value with '*'
 
