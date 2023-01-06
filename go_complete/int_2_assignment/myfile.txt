@@ -1,1 +1,1 @@
-This is my text file to be read by main.go and written to the terminal.
+This is the content of my text file to be read by main.go and written to the terminal.

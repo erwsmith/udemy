@@ -2,17 +2,25 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"os"
 )
 
+type txtWriter struct{}
+
 func main() {
-	file, err := ioutil.ReadFile(os.Args[1])
+	f, err := os.Open(os.Args[1])
 
 	if err != nil {
 		fmt.Println("Error: ", err)
 		os.Exit(1)
 	}
 
-	fmt.Println(string(file))
+	tw := txtWriter{}
+	io.Copy(tw, f)
+}
+
+func (txtWriter) Write(bs []byte) (int, error) {
+	fmt.Println(string(bs))
+	return len(bs), nil
 }
