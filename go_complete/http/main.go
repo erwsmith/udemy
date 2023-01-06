@@ -7,6 +7,8 @@ import (
 	"os"
 )
 
+type logWriter struct{}
+
 func main() {
 	resp, err := http.Get("http://google.com/")
 	if err != nil {
@@ -22,5 +24,16 @@ func main() {
 	// fmt.Println(string(bs))
 
 	// same as above 3 lines, but better
-	io.Copy(os.Stdout, resp.Body)
+	// io.Copy(os.Stdout, resp.Body)
+
+	// example using our own func that implements the Writer interface
+	lw := logWriter{}
+	io.Copy(lw, resp.Body)
+}
+
+// function that implements the Writer interface
+func (logWriter) Write(bs []byte) (int, error) {
+	fmt.Println(string(bs))
+	fmt.Printf("Just wrote %v bytes to Terminal", len(bs))
+	return len(bs), nil
 }
