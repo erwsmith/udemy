@@ -6,8 +6,6 @@ import (
 	"os"
 )
 
-type txtWriter struct{}
-
 func main() {
 	f, err := os.Open(os.Args[1])
 
@@ -16,11 +14,5 @@ func main() {
 		os.Exit(1)
 	}
 
-	tw := txtWriter{}
-	io.Copy(tw, f)
-}
-
-func (txtWriter) Write(bs []byte) (int, error) {
-	fmt.Println(string(bs))
-	return len(bs), nil
+	io.Copy(os.Stdout, f)
 }
